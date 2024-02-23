@@ -68,7 +68,7 @@ jobs:
           SIMBAINI=$ODBCSYSINI/snowflake_odbc/conf/unixodbc.snowflake.ini
 
      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+       uses: mxschmitt/action-tmate@v3
 
      - name: Install Snowflake Driver pt two
        run: |
