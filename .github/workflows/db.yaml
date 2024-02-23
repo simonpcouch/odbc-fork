@@ -67,7 +67,7 @@ jobs:
 
       - name: Install Snowflake Driver pt two
         run: |
-          mv snowflake_odbc $ODBCSYSINI
+          cp -r snowflake_odbc $ODBCSYSINI
           SIMBAINI=$ODBCSYSINI/snowflake_odbc/conf/unixodbc.snowflake.ini
           # copy simba ini file to driver directory
           sudo cp "$SIMBAINI" "$ODBCSYSINI"/snowflake_odbc/lib/simba.snowflake.ini
