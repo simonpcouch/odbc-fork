@@ -65,18 +65,19 @@ jobs:
           gunzip snowflake_linux_x8664_odbc-3.2.0.tgz
           tar -xvf snowflake_linux_x8664_odbc-3.2.0.tar
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Install Snowflake Driver pt two
         run: |
-          cp -r snowflake_odbc $ODBCSYSINI
+          mv -r snowflake_odbc $ODBCSYSINI
           SIMBAINI=$ODBCSYSINI/snowflake_odbc/conf/unixodbc.snowflake.ini
           # copy simba ini file to driver directory
-          sudo cp "$SIMBAINI" "$ODBCSYSINI"/lib/simba.snowflake.ini
-          sudo cat <<CACERT >> "$ODBCSYSINI"/lib/simba.snowflake.ini
-          sudo CABundleFile=$ODBCSYSINI/lib/cacert.pem
-          sudo CACERT
+          sudo cp "$SIMBAINI" "$ODBCSYSINI"/snowflake_odbc/lib/simba.snowflake.ini
+          sudo cat <<CACERT >> "$ODBCSYSINI"/snowflake_odbc/lib/simba.snowflake.ini
+          CABundleFile=$ODBCSYSINI/lib/cacert.pem
+          CACERT
+          CACERT
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       - name: Install MySQL Driver
         run: |
