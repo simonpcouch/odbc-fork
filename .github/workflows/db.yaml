@@ -101,7 +101,7 @@ jobs:
           rm snowflake_linux_x8664_odbc-3.2.0.tar
           cp .github/odbc/snowflake_odbc/conf/unixodbc.snowflake.ini .github/odbc/snowflake_odbc/lib/simba.snowflake.ini
           cat <<CACERT >> .github/odbc/snowflake_odbc/lib/simba.snowflake.ini
-          CABundleFile=.github/odbc/snowflake_odbc/lib/cacert.pem
+          CABundleFile=$ODBCSYSINI/odbc/snowflake_odbc/lib/cacert.pem
           CACERT
 
       - name: Install dependencies
