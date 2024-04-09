@@ -1,6 +1,6 @@
 test_that("secret works", {
   skip_if_not(testthat:::on_ci())
-  expect_equal(Sys.getenv("SQLSERVER_PWD"), "Password12!")
+  expect_equal(Sys.getenv("ODBC_PWD_SQLSERVER"), "Password12!")
 })
 
 test_that("SQLServer", {
