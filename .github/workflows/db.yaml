@@ -86,6 +86,9 @@ jobs:
             && ACCEPT_EULA=Y apt-get install -y msodbcsql17 \
             && ln -s /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.*.so.* /opt/microsoft/msodbcsql17/lib64/libmsodbcsql-17.so"
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+
       - name: Install Oracle Driver
         run: |
           .github/odbc/install-oracle-driver.sh
