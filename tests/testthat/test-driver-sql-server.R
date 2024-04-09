@@ -1,3 +1,8 @@
+test_that("secret works", {
+  skip_if_not(testthat:::on_ci())
+  expect_equal(Sys.getenv("SQLSERVER_PWD"), "Password12!")
+})
+
 test_that("SQLServer", {
   DBItest::make_context(
     odbc(),

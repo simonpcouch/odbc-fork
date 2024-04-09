@@ -78,6 +78,7 @@ jobs:
       - name: Install SQL Server Driver
         run: |
           echo "ODBC_CS_SQLSERVER=dsn=MicrosoftSQLServer;UID=SA;PWD=Password12" >> $GITHUB_ENV
+          echo "${{ secrets.SQLSERVER_PWD }}" >> $GITHUB_ENV
           sudo bash -c "
             curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
             && curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
