@@ -3,8 +3,7 @@ test_that("secret works", {
   if (identical(odbc_pwd_sqlserver, "")) {
     skip("Secret ODBC_PWD_SQLSERVER not available.")
   }
-  expect_equal(odbc_pwd_sqlserver, "Password12!")
-  expect_equal("", "Got this far!")
+  expect_equal(odbc_pwd_sqlserver, "")
 })
 
 test_that("SQLServer", {
