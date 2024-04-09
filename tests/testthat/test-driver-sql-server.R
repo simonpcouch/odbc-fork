@@ -1,6 +1,10 @@
 test_that("secret works", {
-  skip_if_not(testthat:::on_ci())
-  expect_equal(Sys.getenv("ODBC_PWD_SQLSERVER"), "Password12!")
+  odbc_pwd_sqlserver <- Sys.getenv("ODBC_PWD_SQLSERVER")
+  if (identical(odbc_pwd_sqlserver, "")) {
+    skip("Secret ODBC_PWD_SQLSERVER not available.")
+  }
+  expect_equal(odbc_pwd_sqlserver, "Password12!")
+  expect_equal("", "Got this far!")
 })
 
 test_that("SQLServer", {
