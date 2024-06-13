@@ -107,10 +107,9 @@ jobs:
       # note that this assumes Snowflake is the last odbc.ini entry
       - name: Prepare Snowflake private key
         run: |
-          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > private_key.pem
-          chmod 600 private_key.pem
-          echo "PrivateKeyFile=$(pwd)/private_key.pem" | tee -a ~/.github/odbc/odbc.ini
-          echo "PrivateKeyPassphrase=${{ secrets.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE }}" | tee -a ~/.github/odbc/odbc.ini
+          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > $ODBCSYSINI/.github/odbc/private_key.pem
+          echo "PrivateKeyFile=$$ODBCSYSINI/private_key.pem" | tee -a $ODBCSYSINI/.github/odbc/odbc.ini
+          echo "PrivateKeyPassphrase=${{ secrets.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE }}" | tee -a $ODBCSYSINI/odbc.ini
 
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
