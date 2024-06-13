@@ -107,8 +107,8 @@ jobs:
       # note that this assumes Snowflake is the last odbc.ini entry
       - name: Prepare Snowflake private key
         run: |
-          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > $ODBCSYSINI/.github/odbc/private_key.pem
-          echo "PrivateKeyFile=$$ODBCSYSINI/private_key.pem" | tee -a $ODBCSYSINI/.github/odbc/odbc.ini
+          echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > $ODBCSYSINI/private_key.pem
+          echo "PrivateKeyFile=$$ODBCSYSINI/private_key.pem" | tee -a $ODBCSYSINI/odbc.ini
           echo "PrivateKeyPassphrase=${{ secrets.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE }}" | tee -a $ODBCSYSINI/odbc.ini
 
       - name: Install dependencies
