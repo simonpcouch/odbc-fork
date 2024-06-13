@@ -76,6 +76,14 @@ jobs:
           curl ${{ secrets.PRO_DRIVER_ORACLE }} --output $ODBCSYSINI/pro_drivers/oracle.tar.gz
           tar -xvzf $ODBCSYSINI/pro_drivers/oracle.tar.gz -C $ODBCSYSINI/pro_drivers/oracle
 
+      - name: Install PostgreSQL Driver
+        run: |
+          echo "ODBC_CS_POSTGRES=dsn=ProPostgreSQL" >> $GITHUB_ENV
+          mkdir -p $ODBCSYSINI/pro_drivers/postgresql
+          touch $ODBCSYSINI/pro_drivers/postgresql.tar.gz
+          curl ${{ secrets.PRO_DRIVER_POSTGRESQL }} --output $ODBCSYSINI/pro_drivers/postgresql.tar.gz
+          tar -xvzf $ODBCSYSINI/pro_drivers/postgresql.tar.gz -C $ODBCSYSINI/pro_drivers/postgresql
+
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
