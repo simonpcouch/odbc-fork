@@ -60,6 +60,8 @@ jobs:
 
       - name: Install MySQL Driver
         run: |
+          sudo systemctl start mysql.service
+          mysql -uroot -h127.0.0.1 -proot -e 'CREATE DATABASE `test`;'
           echo "ODBC_CS_MYSQL=dsn=ProMySQL" >> $GITHUB_ENV
           mkdir -p $ODBCSYSINI/pro_drivers/mysql
           touch $ODBCSYSINI/pro_drivers/mysql.tar.gz
