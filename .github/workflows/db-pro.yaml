@@ -84,6 +84,7 @@ jobs:
           curl ${{ secrets.PRO_DRIVER_POSTGRESQL }} --output $ODBCSYSINI/pro_drivers/postgresql.tar.gz
           tar -xvzf $ODBCSYSINI/pro_drivers/postgresql.tar.gz -C $ODBCSYSINI/pro_drivers/postgresql
 
+
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
