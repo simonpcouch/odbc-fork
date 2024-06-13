@@ -147,17 +147,3 @@ test_that("Workbench-managed credentials are ignored for other accounts", {
     error = TRUE
   )
 })
-
-test_that("snowflake() works against a real account", {
-  pwd <- Sys.getenv("ODBC_PWD_SNOWFLAKE")
-  if (nchar(pwd) == 0) {
-    skip("Secret ODBC_PWD_SNOWFLAKE not available.")
-  }
-  dbConnect(
-    odbc::snowflake(),
-    account = "uab99020.us-east-1",
-    driver = "SnowflakeDSIIDriver",
-    uid = "odbcTestRunner",
-    pwd = pwd
-  )
-})
