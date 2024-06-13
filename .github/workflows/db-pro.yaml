@@ -66,6 +66,16 @@ jobs:
           curl ${{ secrets.PRO_DRIVER_SQL_SERVER }} --output $ODBCSYSINI/pro_drivers/sql_server.tar.gz
           tar -xvzf $ODBCSYSINI/pro_drivers/sql_server.tar.gz -C $ODBCSYSINI/pro_drivers/sql_server
 
+      - name: Install Oracle Driver
+        run: |
+          echo "ODBC_CS_ORACLE=dsn=ProOracle;UID=RodbcR;PWD=Password12;DBQ=test" >> $GITHUB_ENV
+          .github/odbc/install-oracle-driver.sh
+          echo "LD_LIBRARY_PATH=/opt/oracle/instantclient_21_12:$LD_LIBRARY_PATH" >> $GITHUB_ENV
+          mkdir -p $ODBCSYSINI/pro_drivers/oracle
+          touch $ODBCSYSINI/pro_drivers/oracle.tar.gz
+          curl ${{ secrets.PRO_DRIVER_ORACLE }} --output $ODBCSYSINI/pro_drivers/oracle.tar.gz
+          tar -xvzf $ODBCSYSINI/pro_drivers/oracle.tar.gz -C $ODBCSYSINI/pro_drivers/oracle
+
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
