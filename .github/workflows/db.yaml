@@ -109,7 +109,6 @@ jobs:
         run: |
           echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > $ODBCSYSINI/private_key.pem
           echo "PRIV_KEY_FILE=$$ODBCSYSINI/private_key.pem" | tee -a $ODBCSYSINI/odbc.ini
-          echo "PRIV_KEY_PASSPHRASE=${{ secrets.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE }}" | tee -a $ODBCSYSINI/odbc.ini
 
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
