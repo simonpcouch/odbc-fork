@@ -61,7 +61,7 @@ jobs:
       - name: Install SQL Server Driver
         run: |
           echo "ODBC_CS_SQLSERVER=dsn=ProMicrosoftSQLServer;UID=SA;PWD=Password12" >> $GITHUB_ENV
-          mkdir -p $ODBCSYSINI/pro_drivers
+          mkdir -p $ODBCSYSINI/pro_drivers/sql_server
           touch $ODBCSYSINI/pro_drivers/sql_server.tar.gz
           curl ${{ secrets.PRO_DRIVER_SQL_SERVER }} --output $ODBCSYSINI/pro_drivers/sql_server.tar.gz
           tar -xvzf $ODBCSYSINI/pro_drivers/sql_server.tar.gz -C $ODBCSYSINI/pro_drivers/sql_server
