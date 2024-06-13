@@ -109,8 +109,8 @@ jobs:
         run: |
           echo "${{ secrets.SNOWFLAKE_PRIVATE_KEY }}" > private_key.pem
           chmod 600 private_key.pem
-          echo "PrivateKeyFile=$(pwd)/private_key.pem" | tee -a ~/.odbc.ini
-          echo "PrivateKeyPassphrase=${{ secrets.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE }}" | tee -a ~/.odbc.ini
+          echo "PrivateKeyFile=$(pwd)/private_key.pem" | tee -a ~/.github/odbc/odbc.ini
+          echo "PrivateKeyPassphrase=${{ secrets.SNOWFLAKE_PRIVATE_KEY_PASSPHRASE }}" | tee -a ~/.github/odbc/odbc.ini
 
       - name: Install dependencies
         uses: r-lib/actions/setup-r-dependencies@v2
